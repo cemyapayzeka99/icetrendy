@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000/galeri -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s http://localhost:3000/iletisim -o /dev/null -w \" %{http_code}\")",
+      "Bash(curl -s http://localhost:3000/urunler -o /dev/null -w \" %{http_code}\")",
+      "Bash(curl -s http://localhost:3000/urunler/dogal-buz-pistleri -o /dev/null -w \" %{http_code}\")",
+      "Bash(mkdir -p /Users/barinkorkanc/Desktop/icetrendy-v2/public/images/wm-technics)",
+      "Bash(cp \"/Users/barinkorkanc/Desktop/icetrendy-v2/public/images/diger-tedarikler/WM logo_JPG.jpg\" /Users/barinkorkanc/Desktop/icetrendy-v2/public/images/wm-technics/01.jpg)"
+    ]
+  }
+}

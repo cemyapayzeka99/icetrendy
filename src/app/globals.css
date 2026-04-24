@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0D1B2A;
+  --navy-mid: #1a3050;
+  --background: #ffffff;
+  --foreground: #0D1B2A;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --surface: #F5F7FA;
+  --accent: #0EA5E9;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
