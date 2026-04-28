@@ -134,7 +134,7 @@ export default function Footer() {
         <div className="border-t border-gray-50 py-4 text-center">
           <p className="text-xs text-gray-300">
             {t.footer.builtBy.split("{company}")[0]}
-            <a href="https://bbwebajans.web.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 font-medium hover:text-gray-600 transition-colors">BB Web Ajans</a>
+            <a href="https://bbwebajans.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 font-medium hover:text-gray-600 transition-colors">BB Web Ajans</a>
             {t.footer.builtBy.split("{company}")[1]}
           </p>
         </div>
