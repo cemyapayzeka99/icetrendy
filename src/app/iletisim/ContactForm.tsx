@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 type FormState = { success: boolean; message: string } | null;
@@ -21,15 +20,23 @@ export default function ContactForm() {
     if (!formRef.current) return;
     setPending(true);
     setState(null);
+
+    const data = Object.fromEntries(new FormData(formRef.current));
+
     try {
-      await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        formRef.current,
-        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
-      );
-      setState({ success: true, message: "Mesajınız iletildi. En kısa sürede size dönüş yapacağız." });
-      formRef.current.reset();
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setState({ success: true, message: "Mesajınız iletildi. En kısa sürede size dönüş yapacağız." });
+        formRef.current.reset();
+      } else {
+        const json = await res.json().catch(() => ({}));
+        setState({ success: false, message: json.error ?? "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin." });
+      }
     } catch {
       setState({ success: false, message: "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin." });
     } finally {
